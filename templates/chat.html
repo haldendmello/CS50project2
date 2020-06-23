@@ -1,0 +1,87 @@
+  {% extends "layout.html" %}
+
+
+{% block head %}
+
+<style>
+  
+    div.message_holder {
+    margin-top: 10px;
+    min-height: 72vh;
+    max-height: 72vh;
+    max-width: 100%;
+    overflow-y: auto; /*Make  this section scrolable */
+}
+      div.fixed {
+  position: fixed;
+  width: 100%;
+  bottom: 5px;
+
+} 
+      div.msg_bbl {
+        background-color: #ddd;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: #555;
+        margin-bottom: 5px;
+        width: 100%;
+      }
+</style>
+
+<script src="/static/chane.js"></script>
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<!-- channel name -->
+<center>
+<h2>
+    <span class="badge badge-dark">
+        {{ session.current_channel }}
+    </span>
+</h2>
+</center>
+<!-- print messages -->
+
+<div class="container">
+    
+        <div class="no_message">
+
+          
+        <div class="message_holder">
+
+         
+            {% if messages  %}
+                {% for message in messages %}
+                    <div class="msg_bbl"><b style="color: #000">{{message[0]}} </b> {{message[1]}} </br> {{message[2]}} </div>
+                {% endfor %}
+
+            {% endif %}
+        </div>   
+          
+    </div>  
+</div>
+
+<!-- send the message area -->
+
+<main class="container-p5">
+<div class="fixed">
+    <div class=Center align='center'>
+        <div class="container">
+            <div class="d-flex">
+                <input type="text "class="form-control mr-1" id="myMessage"autocomplete="off" autofocus="on" required="True">
+                <input type="reset"class="btn btn-primary" id="sendmessage" value="Send">
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+
+
+
+
+
+{% endblock %}
